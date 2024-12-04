@@ -166,7 +166,10 @@ const App = () => {
       //the team state should be updated to exclude this character.
       //This can be achieved by creating a new array that filters out the selected character.
       return prevTeam.filter( (member, memberIndex) => index !== memberIndex )
-
+    })
+    //8.4 Increase the money state by the price of the removed character, effectively refunding the cost to your budget.
+    setMoney(prevMoney => {
+      return prevMoney += fighter.price
     })
     
   }

@@ -80,6 +80,8 @@ const App = () => {
       img: 'https://via.placeholder.com/150/602b9e',
     },
   ])
+  {/* 5.1 Initialize a new state variable named totalStrength. Set its initial value to 0. */}
+  const [totalStrength, setTotalStrength] = useState(0)
 
   // 3. Create a function named handleAddFighter.
   //This function will be triggered when you click the Add button for any character
@@ -112,7 +114,11 @@ const App = () => {
       <h1>Zombie Fighters</h1>
       {/* 2. Display the current value of money in the UI */}
       <h2>Money: {money}</h2>
-
+      {/* 5.Display Total Team Strength: In this step,
+       you’ll create a state to keep track of the total strength of your team and display it in the UI.
+      */}
+      
+      <h2>Team Strength: </h2>
 
       {/* 4.Now that you can add characters to your team,
       let’s focus on displaying and managing them within your application’s interface. */}

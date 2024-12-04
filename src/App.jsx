@@ -157,6 +157,7 @@ const App = () => {
   // 8. Create a function named handleRemoveFighter. This handler function is key to managing your team. This function enables you to remove characters, adjusting the total strength, agility, and budget of your team accordingly.
   const handleRemoveFighter = (fighter) => {
     
+
   }
 
   return (
@@ -203,6 +204,7 @@ const App = () => {
                   {/* 7. Add a Remove button to each of the characters on your team.
                   This button, when clicked, should call a handler function to remove the
                   character from your team. */}
+                  {/* 8.1 this function will be executed when you click the remove button for a character in your team */}
                   <button onClick={() => handleRemoveFighter(member)}>Remove</button>
                 </li>
               ))

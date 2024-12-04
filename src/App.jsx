@@ -195,6 +195,10 @@ const App = () => {
                   Price: {member.price} <br />
                   Strength: {member.strength} <br />
                   Agility: {member.agility} <br />
+                  {/* 7. Add a Remove button to each of the characters on your team.
+                  This button, when clicked, should call a handler function to remove the
+                  character from your team. */}
+                  <button>Remove</button>
                 </li>
               ))
             }

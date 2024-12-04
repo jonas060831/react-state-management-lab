@@ -85,6 +85,15 @@ const App = () => {
   //This function will be triggered when you click the Add button for any character
   //in the zombieFighters list
   const handleAddFighter = (selectedCharacter) => {
+
+    //3.3 Before adding a character to the team, check if you have enough money to afford them.
+    //If your money is less than the character’s price,
+    //you shouldn’t be able to add them. In such cases,
+    //log a message to the console such as "Not enough money"
+    if(money < selectedCharacter.price) {
+      console.log("Not enough money")
+    } else {
+
     //3.1 When you click Add on a character, this function should add the selected character’s object
     //to the team state array. This is how you build your team.
     setTeam([...team, selectedCharacter])
@@ -94,6 +103,7 @@ const App = () => {
     setMoney(prevValue => {
       return prevValue - selectedCharacter.price
     })
+    }
   }
 
   return (

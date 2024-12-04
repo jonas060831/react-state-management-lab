@@ -125,7 +125,23 @@ const App = () => {
         (
           <p>Pick some team members! </p>
         ):(
-          <p>{team.length}</p>
+          // 4.2 If there are characters in your team, display each one in the UI. 
+          //For each character in the team array,
+          //show their: name, image, price, strength, and agility.
+          //Follow the same pattern you used to display the array of all characters.
+          <ul>
+            {
+              team.map( (member, index) => (
+                <li key={index}>
+                  {member.name} <br />
+                  <img src={member.img} alt={member.img} /> <br />
+                  Price: {member.price} <br />
+                  Strength: {member.strength} <br />
+                  Agility: {member.agility} <br />
+                </li>
+              ))
+            }
+          </ul>
         )
       }
       {/* 

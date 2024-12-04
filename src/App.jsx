@@ -113,6 +113,21 @@ const App = () => {
       {/* 2. Display the current value of money in the UI */}
       <h2>Money: {money}</h2>
 
+
+      {/* 4.Now that you can add characters to your team,
+      let’s focus on displaying and managing them within your application’s interface. */}
+      <h2>Team:</h2>
+      {
+        // 4.1 First, verify if your team array has any characters in it.
+        //If the team array length is 0,
+        //display Pick some team members! in the UI.
+        team.length === 0 ?
+        (
+          <p>Pick some team members! </p>
+        ):(
+          <p>{team.length}</p>
+        )
+      }
       {/* 
       1. Display the list of zombieFighters by mapping the array into the UI
       of App.jsx. (We’ve provided some helpful CSS assuming you use a ul and lis)

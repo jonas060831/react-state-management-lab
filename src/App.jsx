@@ -114,19 +114,24 @@ const App = () => {
   // 5.2 Whenever a character is added or removed from the team, recalculate the total strength.
   //This calculation should sum up the strength values of all characters currently in the team.
   //(A great case for a helper function!)
-  const recalculateTotalStrength = (memberStrength) => {
+  const recalculateTotalStrength = (member) => {
     
     //we wanted to sum the characters strength and store it to a variable
     //ill try using reducer and initialize the value to 0
     //reducer test fails and using the previous state is the correct answer
-    setTotalStrength(prevState => {
-      return prevState += memberStrength
-    })
+    //5.4 I added a functionality where the strength should not be increased if money is not enough for the team member price
+    if(money < member.price) {
+      console.log('Not enough money for this member')
+    } else {
+      setTotalStrength(prevState => {
+        return prevState += member.strength
+      })
+    }
   }
 
   const handleAddTeamMember = (fighter) => {
     handleAddFighter(fighter)
-    recalculateTotalStrength(fighter.strength)
+    recalculateTotalStrength(fighter)
   }
 
   return (
@@ -138,8 +143,9 @@ const App = () => {
       {/* 5.Display Total Team Strength: In this step,
        you’ll create a state to keep track of the total strength of your team and display it in the UI.
       */}
-      
-      <h2>Team Strength: {totalStrength} </h2>
+      {/* 5.3 Show the value of totalStrength in the UI. If the team array is empty,
+      totalStrength should be 0. */}
+      <h2>Team Strength: {team.length === 0 ? '0' : totalStrength} </h2>
 
       {/* 4.Now that you can add characters to your team,
       let’s focus on displaying and managing them within your application’s interface. */}

@@ -135,9 +135,23 @@ const App = () => {
     }
   }
 
+  //6.2 Just like with strength, recalculate total agility whenever there’s a change in the team.
+  //This should be the sum of the agility values of all the team members.
+  const recalculateTotalAgility = (member) => {
+
+    if(money < member.price) {
+      console.log('Not enough money for this member')
+    } else {
+      setTotalAgility(prevState => {
+        return prevState += member.agility
+      })
+    }
+  }
+
   const handleAddTeamMember = (fighter) => {
     handleAddFighter(fighter)
     recalculateTotalStrength(fighter)
+    recalculateTotalAgility(fighter)
   }
 
   return (
@@ -154,6 +168,7 @@ const App = () => {
       <h2>Team Strength: {team.length === 0 ? '0' : totalStrength} </h2>
 
       {/* 6. Display Total Team Agility: Similarly, create a state for the total agility of your team and display this value in the UI. */}
+      {/* 6.3 I already did this one  */}
       <h2>Team Agility: { team.length === 0 ? '0' : totalAgility }</h2>
 
       {/* 4.Now that you can add characters to your team,

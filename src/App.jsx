@@ -88,7 +88,12 @@ const App = () => {
     //3.1 When you click Add on a character, this function should add the selected character’s object
     //to the team state array. This is how you build your team.
     setTeam([...team, selectedCharacter])
-    
+    //3.2 Each character comes with a price. Upon adding a character to your team,
+    //subtract the character’s price from your current money value.
+    //Think of it as spending money to recruit a team member.
+    setMoney(prevValue => {
+      return prevValue - selectedCharacter.price
+    })
   }
 
   return (

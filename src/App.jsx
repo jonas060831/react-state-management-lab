@@ -12,7 +12,8 @@ const App = () => {
    {/* 5.1 Initialize a new state variable named totalStrength. Set its initial value to 0. */}
   const [totalStrength, setTotalStrength] = useState(0)
 
-  
+  {/*Start by defining a state variable named totalAgility, initializing it at 0*/}
+  const [totalAgility, setTotalAgility] = useState(0)
 
 
    const [zombieFighters, setZombieFighters] = useState([

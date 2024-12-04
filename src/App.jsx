@@ -12,6 +12,9 @@ const App = () => {
    {/* 5.1 Initialize a new state variable named totalStrength. Set its initial value to 0. */}
   const [totalStrength, setTotalStrength] = useState(0)
 
+  
+
+
    const [zombieFighters, setZombieFighters] = useState([
     {
       name: 'Survivor',
@@ -116,13 +119,15 @@ const App = () => {
   //(A great case for a helper function!)
   const recalculateTotalStrength = (member) => {
     
-    //we wanted to sum the characters strength and store it to a variable
-    //ill try using reducer and initialize the value to 0
-    //reducer test fails and using the previous state is the correct answer
+    
     //5.4 I added a functionality where the strength should not be increased if money is not enough for the team member price
     if(money < member.price) {
       console.log('Not enough money for this member')
     } else {
+
+      //5.3we wanted to sum the characters strength and store it to a variable
+      //ill try using reducer and initialize the value to 0
+      //reducer test fails and using the previous state is the correct answer
       setTotalStrength(prevState => {
         return prevState += member.strength
       })
@@ -146,6 +151,9 @@ const App = () => {
       {/* 5.3 Show the value of totalStrength in the UI. If the team array is empty,
       totalStrength should be 0. */}
       <h2>Team Strength: {team.length === 0 ? '0' : totalStrength} </h2>
+
+      {/* 6. Display Total Team Agility: Similarly, create a state for the total agility of your team and display this value in the UI. */}
+      <h2>Team Agility: { team.length === 0 ? '0' : totalAgility }</h2>
 
       {/* 4.Now that you can add characters to your team,
       let’s focus on displaying and managing them within your application’s interface. */}

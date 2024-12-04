@@ -159,12 +159,16 @@ const App = () => {
     
     //8.2 This function should determine which character needs to be removed based on user
     //interaction (usually, this is passed via an identifier like an ID or an index in the array).
+    //sorry :( i shortcut and add the index to the parameter of the function
+    //I didnt realize i should reference the whole zombieFighter array
     setTeam(prevTeam => {
-
+      //8.3 Once the character to be removed is identified,
+      //the team state should be updated to exclude this character.
+      //This can be achieved by creating a new array that filters out the selected character.
       return prevTeam.filter( (member, memberIndex) => index !== memberIndex )
 
     })
-
+    
   }
 
   return (

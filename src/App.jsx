@@ -118,13 +118,13 @@ const App = () => {
     
     //we wanted to sum the characters strength and store it to a variable
     //ill try using reducer and initialize the value to 0
-
+    //reducer test fails and using the previous state is the correct answer
     setTotalStrength(prevState => {
       return prevState += memberStrength
     })
   }
 
-  const handleZombieClick = (fighter) => {
+  const handleAddTeamMember = (fighter) => {
     handleAddFighter(fighter)
     recalculateTotalStrength(fighter.strength)
   }
@@ -185,7 +185,7 @@ const App = () => {
               Strength: {fighter.strength} <br />
               Agility: {fighter.agility} <br />
 
-              <button onClick={() => handleZombieClick(fighter) }>Add</button>
+              <button onClick={() => handleAddTeamMember(fighter) }>Add</button>
             </li>
           ))
         }

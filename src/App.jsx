@@ -1,6 +1,6 @@
 // src/App.jsx
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import './App.css'
 
@@ -8,6 +8,10 @@ const App = () => {
 
    const [team, setTeam] = useState([])
    const [money, setMoney] = useState(100)
+
+   {/* 5.1 Initialize a new state variable named totalStrength. Set its initial value to 0. */}
+  const [totalStrength, setTotalStrength] = useState(0)
+
    const [zombieFighters, setZombieFighters] = useState([
     {
       name: 'Survivor',
@@ -80,8 +84,7 @@ const App = () => {
       img: 'https://via.placeholder.com/150/602b9e',
     },
   ])
-  {/* 5.1 Initialize a new state variable named totalStrength. Set its initial value to 0. */}
-  const [totalStrength, setTotalStrength] = useState(0)
+  
 
   // 3. Create a function named handleAddFighter.
   //This function will be triggered when you click the Add button for any character
@@ -96,16 +99,34 @@ const App = () => {
       console.log("Not enough money")
     } else {
 
-    //3.1 When you click Add on a character, this function should add the selected character’s object
-    //to the team state array. This is how you build your team.
-    setTeam([...team, selectedCharacter])
-    //3.2 Each character comes with a price. Upon adding a character to your team,
-    //subtract the character’s price from your current money value.
-    //Think of it as spending money to recruit a team member.
-    setMoney(prevValue => {
-      return prevValue - selectedCharacter.price
+      //3.1 When you click Add on a character, this function should add the selected character’s object
+      //to the team state array. This is how you build your team.
+      setTeam([...team, selectedCharacter])
+      //3.2 Each character comes with a price. Upon adding a character to your team,
+      //subtract the character’s price from your current money value.
+      //Think of it as spending money to recruit a team member.
+      setMoney(prevValue => {
+        return prevValue - selectedCharacter.price
+      })
+    } 
+  }
+
+  // 5.2 Whenever a character is added or removed from the team, recalculate the total strength.
+  //This calculation should sum up the strength values of all characters currently in the team.
+  //(A great case for a helper function!)
+  const recalculateTotalStrength = (memberStrength) => {
+    
+    //we wanted to sum the characters strength and store it to a variable
+    //ill try using reducer and initialize the value to 0
+
+    setTotalStrength(prevState => {
+      return prevState += memberStrength
     })
-    }
+  }
+
+  const handleZombieClick = (fighter) => {
+    handleAddFighter(fighter)
+    recalculateTotalStrength(fighter.strength)
   }
 
   return (
@@ -118,7 +139,7 @@ const App = () => {
        you’ll create a state to keep track of the total strength of your team and display it in the UI.
       */}
       
-      <h2>Team Strength: </h2>
+      <h2>Team Strength: {totalStrength} </h2>
 
       {/* 4.Now that you can add characters to your team,
       let’s focus on displaying and managing them within your application’s interface. */}
@@ -164,7 +185,7 @@ const App = () => {
               Strength: {fighter.strength} <br />
               Agility: {fighter.agility} <br />
 
-              <button onClick={() => handleAddFighter(fighter)}>Add</button>
+              <button onClick={() => handleZombieClick(fighter) }>Add</button>
             </li>
           ))
         }

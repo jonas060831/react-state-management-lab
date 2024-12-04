@@ -118,7 +118,7 @@ const App = () => {
   // 5.2 Whenever a character is added or removed from the team, recalculate the total strength.
   //This calculation should sum up the strength values of all characters currently in the team.
   //(A great case for a helper function!)
-  const recalculateTotalStrength = (member) => {
+  const recalculateTotalStrength = (member, isBeingRemove=false) => {
     
     
     //5.4 I added a functionality where the strength should not be increased if money is not enough for the team member price
@@ -130,6 +130,10 @@ const App = () => {
       //ill try using reducer and initialize the value to 0
       //reducer test fails and using the previous state is the correct answer
       setTotalStrength(prevState => {
+
+        //if isBeingRemove is true then reflect it to the ui by deducting from total strength
+        if(isBeingRemove) return prevState -= member.strength
+
         return prevState += member.strength
       })
     }
@@ -137,12 +141,14 @@ const App = () => {
 
   //6.2 Just like with strength, recalculate total agility whenever there’s a change in the team.
   //This should be the sum of the agility values of all the team members.
-  const recalculateTotalAgility = (member) => {
+  const recalculateTotalAgility = (member, isBeingRemove=false) => {
 
     if(money < member.price) {
       console.log('Not enough money for this member')
     } else {
       setTotalAgility(prevState => {
+
+        if (isBeingRemove) return prevState -= member.agility
         return prevState += member.agility
       })
     }
@@ -171,6 +177,9 @@ const App = () => {
     setMoney(prevMoney => {
       return prevMoney += fighter.price
     })
+
+    recalculateTotalStrength(fighter, true)
+    recalculateTotalAgility(fighter, true)
     
   }
 

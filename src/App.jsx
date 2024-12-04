@@ -85,7 +85,9 @@ const App = () => {
   //This function will be triggered when you click the Add button for any character
   //in the zombieFighters list
   const handleAddFighter = (selectedCharacter) => {
-    /
+    //3.1 When you click Add on a character, this function should add the selected character’s object
+    //to the team state array. This is how you build your team.
+    setTeam([...team, selectedCharacter])
     
   }
 
